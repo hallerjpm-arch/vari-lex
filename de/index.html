@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VariLex | Tourismus-Lokalisierung und Audioguides</title>
+    <meta name="description" content="VariLex: Experten für die Lokalisierung von Inhalten für den Tourismus- und Kultursektor. Website im Aufbau.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ═══════════════════════════════════════════════════════════ */
+        /* TOKENS - NUEVA PALETA: 002060, F2AC78, F9F3E3, EC6D60 */
+        :root {
+            /* Colores Principales: Vari, Lex, Fondo */
+            --color-vari: #002060;     
+            --color-lex: #F2AC78;      
+            --color-neutral-bg: #F9F3E3; 
+            
+            /* Colores Secundarios y de Resalte */
+            --color-resaltar: #EC6D60;  
+            --color-neutral-dark: #333333; 
+            
+            /* Ajustes para diseño */
+            --color-accent-600: #e29764; 
+            --color-text-secondary: var(--color-neutral-dark); 
+
+            /* Espaciado, Tipografía, Sombras y Animación */
+            --space-xs: 0.25rem;
+            --space-sm: 0.5rem;
+            --space-md: 1rem;
+            --space-xl: 2rem;
+            --space-2xl: 3rem;
+            --space-4xl: 6rem;
+            --font-size-base: 1.125rem;
+            --font-size-2xl: clamp(2rem, 1.75rem + 1.25vw, 3rem);
+            --radius-lg: 0.5rem;
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.04);
+            --cta-shadow-color: rgba(242, 172, 120, 0.5); 
+            --cta-shadow-hover: 0 8px 24px var(--cta-shadow-color), 0 4px 8px rgba(0, 32, 96, 0.1);
+            --ease-in-out-superior: cubic-bezier(0.65, 0.05, 0.36, 1);
+        }
+        
+        /* ═══════════════════════════════════════════════════════════ */
+        /* BASE Y FONDO ANIMADO */
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--color-vari); 
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            min-height: 100vh;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            
+            /* Animación de Fondo con la nueva paleta */
+            background: linear-gradient(-45deg, var(--color-neutral-bg), #fff9ec, var(--color-resaltar));
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+        
+        /* ═══════════════════════════════════════════════════════════ */
+        /* CLASES DE COLOR DEL LOGO */
+        .vari { color: var(--color-vari); }
+        .lex { color: var(--color-lex); }
+
+        /* ═══════════════════════════════════════════════════════════ */
+        /* KEYFRAMES */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.98); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* ═══════════════════════════════════════════════════════════ */
+        /* LAYOUT Y ANIMACIÓN DEL CONTENEDOR PRINCIPAL */
+        .coming-soon-container {
+            width: min(100% - var(--space-xl), 50rem);
+            padding: var(--space-4xl) var(--space-xl);
+            background-color: white; 
+            border-radius: var(--radius-lg);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            position: relative;
+            opacity: 0;
+            animation: scaleIn 0.8s var(--ease-in-out-superior) forwards;
+            animation-delay: 0.1s;
+        }
+
+        /* Ocultar elementos para la entrada escalonada (staggered entrance) */
+        .logo-title, .title, .subtitle, .cta-button, .footer-text { 
+            opacity: 0; 
+            animation-name: fadeInUp;
+            animation-fill-mode: forwards;
+            animation-duration: 0.8s;
+            animation-timing-function: var(--ease-in-out-superior);
+        }
+
+        /* Aplicación de retrasos (el toque elegante) */
+        .lang-selector { 
+            opacity: 0;
+            animation: fadeIn 0.5s 0.2s forwards; 
+            z-index: 10;
+        }
+        .logo-title { animation-delay: 0.6s; } 
+        .title { animation-delay: 0.8s; } 
+        .subtitle { animation-delay: 1.0s; } 
+        .cta-button { animation-delay: 1.2s; } 
+        .footer-text { animation-delay: 1.4s; } 
+
+        /* ═══════════════════════════════════════════════════════════ */
+        /* RESTO DE ESTILOS */
+        .logo-title {
+            font-size: clamp(2.5rem, 2rem + 2.5vw, 4rem); 
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: var(--space-xl);
+        }
+        .title {
+            font-size: var(--font-size-2xl); 
+            font-weight: 600;
+            line-height: 1.1;
+            margin-top: 0;
+            margin-bottom: var(--space-xl);
+            color: var(--color-vari);
+        }
+        .subtitle {
+            font-size: var(--font-size-base);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-2xl);
+            max-width: 60ch;
+            margin-inline: auto;
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border-radius: var(--radius-lg);
+            background-color: var(--color-lex); 
+            color: white; 
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.3s var(--ease-in-out-superior), box-shadow 0.3s var(--ease-in-out-superior), background-color 0.15s;
+            transform: translateZ(0);
+        }
+        .cta-button:hover, .cta-button:focus-visible {
+            background-color: var(--color-accent-600); 
+            box-shadow: var(--cta-shadow-hover);
+            transform: translateY(-4px) translateZ(0); 
+            outline: none;
+        }
+        .lang-selector {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: var(--space-xs);
+            padding: var(--space-sm);
+            border: 1px solid var(--color-neutral-dark);
+            border-radius: var(--radius-lg);
+            background-color: white;
+        }
+        .lang-selector a {
+            text-decoration: none;
+            font-weight: 500;
+            color: var(--color-text-secondary);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            transition: background-color 0.15s, color 0.15s;
+        }
+        .lang-selector a.is-active {
+            background-color: var(--color-lex); 
+            color: white;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="coming-soon-container">
+        
+        <div class="lang-selector">
+            <a href="../index.html" lang="es">ES</a>
+            <a href="../en/index.html" lang="en">EN</a>
+            <a href="index.html" class="is-active" lang="de">DE</a>
+            <a href="../it/index.html" lang="it">IT</a>
+        </div>
+        
+        <h1 class="logo-title">
+            <span class="vari">Vari</span><span class="lex">Lex</span>
+        </h1>
+        
+        <p class="title">Website im Aufbau</p>
+        
+        <p class="subtitle">
+            Wir arbeiten daran, unsere Plattform fertigzustellen. Zögern Sie in der Zwischenzeit nicht mit Ihrem Projekt.
+            <br><br>
+            Wenn Sie Fragen haben oder Ihr Lokalisierungs- oder Audioguide-Projekt senden möchten, kontaktieren Sie uns bitte per E-Mail. Wir helfen Ihnen gerne weiter.
+        </p>
+        
+        <a href="mailto:info@varilex.com?subject=Anfrage%20VariLex%20(Website%20im%20Aufbau)" 
+           class="cta-button">
+           📧 Anfrage senden an info@varilex.com
+        </a>
+
+        <p class="footer-text" style="margin-top: var(--space-xl); font-size: 0.9rem; color: var(--color-text-secondary);">
+            &copy; 2025 VariLex. Alle Rechte vorbehalten.
+        </p>
+        
+    </section>
+
+</body>
+</html>
