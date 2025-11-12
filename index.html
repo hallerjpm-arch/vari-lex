@@ -3,81 +3,230 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Traducción Turística, Localización y Audioguías | VariLex</title>
-    <meta name="description" content="Especialistas en localización cultural para turismo, hostelería y cultura. Traducción de menús, webs y producción de audioguías profesionales.">
-    <meta name="keywords" content="traducción turística, localización cultural, audioguías, menús multilingües, contenido turístico, traducción, localización">
-
+    <title>VariLex | Localización Turística y Audioguías</title>
+    <meta name="description" content="VariLex: Expertos en localización de contenidos para el sector turístico y cultural. Sitio web en construcción.">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Trocchi&family=Roboto+Slab:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* ═══════════════════════════════════════════════════════════ */
+        /* TOKENS - NUEVA PALETA: 002060, F2AC78, F9F3E3, EC6D60 */
+        :root {
+            /* Colores Principales: Vari, Lex, Fondo */
+            --color-vari: #002060;     /* Azul oscuro */
+            --color-lex: #F2AC78;      /* Melocotón (Acento principal) */
+            --color-neutral-bg: #F9F3E3; /* Fondo muy claro */
+            
+            /* Colores Secundarios y de Resalte */
+            --color-resaltar: #EC6D60;  /* Rojo coral (para animación de fondo) */
+            --color-neutral-dark: #333333; /* Texto secundario, general */
+            
+            /* Ajustes para diseño */
+            --color-accent-600: #e29764; /* Un poco más oscuro que Lex para el hover */
+            --color-text-secondary: var(--color-neutral-dark); 
 
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "name": "VariLex",
-      "url": "https://www.varilex.com",
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+34-555-1234",
-        "contactType": "Sales"
-      },
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Calle Ficticia 123",
-        "addressLocality": "Ciudad",
-        "addressRegion": "Región",
-        "postalCode": "12345",
-        "addressCountry": "ES"
-      },
-      "serviceType": [
-        "Traducción de Menús",
-        "Localización Web",
-        "Creación de Audioguías",
-        "Servicios de Localización Cultural"
-      ],
-      "image": "https://www.varilex.com/logo.png"
-    }
-    </script>
+            /* Espaciado, Tipografía, Sombras y Animación */
+            --space-xs: 0.25rem;
+            --space-sm: 0.5rem;
+            --space-md: 1rem;
+            --space-xl: 2rem;
+            --space-2xl: 3rem;
+            --space-4xl: 6rem;
+            --font-size-base: 1.125rem;
+            --font-size-2xl: clamp(2rem, 1.75rem + 1.25vw, 3rem);
+            --radius-lg: 0.5rem;
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.04);
+            --cta-shadow-color: rgba(242, 172, 120, 0.5); /* Sombra basada en Lex */
+            --cta-shadow-hover: 0 8px 24px var(--cta-shadow-color), 0 4px 8px rgba(0, 32, 96, 0.1);
+            --ease-in-out-superior: cubic-bezier(0.65, 0.05, 0.36, 1);
+        }
+        
+        /* ═══════════════════════════════════════════════════════════ */
+        /* BASE Y FONDO ANIMADO */
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--color-vari); /* Texto principal en Vari */
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            min-height: 100vh;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            
+            /* Animación de Fondo con la nueva paleta */
+            background: linear-gradient(-45deg, var(--color-neutral-bg), #fff9ec, var(--color-resaltar));
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+        
+        /* ═══════════════════════════════════════════════════════════ */
+        /* CLASES DE COLOR DEL LOGO */
+        .vari { color: var(--color-vari); }
+        .lex { color: var(--color-lex); }
+
+        /* ═══════════════════════════════════════════════════════════ */
+        /* KEYFRAMES */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.98); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* ═══════════════════════════════════════════════════════════ */
+        /* LAYOUT Y ANIMACIÓN DEL CONTENEDOR PRINCIPAL */
+        .coming-soon-container {
+            width: min(100% - var(--space-xl), 50rem);
+            padding: var(--space-4xl) var(--space-xl);
+            background-color: white; 
+            border-radius: var(--radius-lg);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            position: relative;
+            opacity: 0;
+            animation: scaleIn 0.8s var(--ease-in-out-superior) forwards;
+            animation-delay: 0.1s;
+        }
+        
+        /* Ocultar elementos para la entrada escalonada (staggered entrance) */
+        .logo-title, .title, .subtitle, .cta-button, .footer-text { 
+            opacity: 0; 
+            animation-name: fadeInUp;
+            animation-fill-mode: forwards;
+            animation-duration: 0.8s;
+            animation-timing-function: var(--ease-in-out-superior);
+        }
+
+        /* Aplicación de retrasos (el toque elegante) */
+        .lang-selector { 
+            opacity: 0;
+            animation: fadeIn 0.5s 0.2s forwards; 
+            z-index: 10;
+        }
+        .logo-title { animation-delay: 0.6s; } 
+        .title { animation-delay: 0.8s; } 
+        .subtitle { animation-delay: 1.0s; } 
+        .cta-button { animation-delay: 1.2s; } 
+        .footer-text { animation-delay: 1.4s; } 
+
+        /* ═══════════════════════════════════════════════════════════ */
+        /* RESTO DE ESTILOS */
+        .logo-title {
+            font-size: clamp(2.5rem, 2rem + 2.5vw, 4rem); 
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: var(--space-xl);
+            /* Utiliza los colores de Vari y Lex */
+        }
+        .title {
+            font-size: var(--font-size-2xl); 
+            font-weight: 600;
+            line-height: 1.1;
+            margin-top: 0;
+            margin-bottom: var(--space-xl);
+            color: var(--color-vari);
+        }
+        .subtitle {
+            font-size: var(--font-size-base);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-2xl);
+            max-width: 60ch;
+            margin-inline: auto;
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border-radius: var(--radius-lg);
+            background-color: var(--color-lex); /* Color Lex para el CTA */
+            color: white; /* Texto del botón en blanco */
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.3s var(--ease-in-out-superior), box-shadow 0.3s var(--ease-in-out-superior), background-color 0.15s;
+            transform: translateZ(0);
+        }
+        .cta-button:hover, .cta-button:focus-visible {
+            background-color: var(--color-accent-600); /* Tono un poco más oscuro */
+            box-shadow: var(--cta-shadow-hover);
+            transform: translateY(-4px) translateZ(0); 
+            outline: none;
+        }
+        .lang-selector {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: var(--space-xs);
+            padding: var(--space-sm);
+            border: 1px solid var(--color-neutral-dark);
+            border-radius: var(--radius-lg);
+            background-color: white;
+        }
+        .lang-selector a {
+            text-decoration: none;
+            font-weight: 500;
+            color: var(--color-text-secondary);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            transition: background-color 0.15s, color 0.15s;
+        }
+        .lang-selector a.is-active {
+            background-color: var(--color-lex); /* Acento Lex */
+            color: white;
+            font-weight: 700;
+        }
+    </style>
 </head>
 <body>
 
-    <header class="header">
-        <div class="header__container u-container">
-            <h1 class="header__logo">
-                <a href="/">
-                    <span class="vari">Vari</span><span class="lex">Lex</span>
-                </a>
-            </h1>
-            <nav class="header__nav" aria-label="Navegación principal">
-                <ul class="header__nav-list">
-                    <li class="header__nav-item"><a href="#servicios" class="header__nav-link">Servicios</a></li>
-                    <li class="header__nav-item"><a href="#sobre-nosotros" class="header__nav-link">Sobre Nosotros</a></li>
-                    <li class="header__nav-item"><a href="#contacto" class="header__nav-link">Contacto</a></li>
-                </ul>
-            </nav>
+    <section class="coming-soon-container">
+        
+        <div class="lang-selector">
+            <a href="index.html" class="is-active" lang="es">ES</a>
+            
+            <a href="de/index.html" lang="de">DE</a>
+            
         </div>
-    </header>
+        
+        <h1 class="logo-title">
+            <span class="vari">Vari</span><span class="lex">Lex</span>
+        </h1>
+        
+        <p class="title">Sitio en Construcción</p>
+        
+        <p class="subtitle">
+            Estamos trabajando para finalizar nuestra plataforma. Mientras tanto, no demores tu proyecto. 
+            <br><br>
+            Si tienes alguna consulta o quieres enviar tu proyecto de localización o audioguía, por favor, ponte en contacto con nosotros por correo electrónico. Estaremos encantados de ayudarte.
+        </p>
+        
+        <a href="mailto:info@varilex.com?subject=Consulta%20VariLex%20(Sitio%20en%20Construcción)" 
+           class="cta-button">
+           📧 Enviar Consulta a info@vari-lex.com
+        </a>
 
-    <main>
-        <section class="hero u-section">
-            <div class="hero__container u-container">
-                <div class="hero__content">
-                    <h2 class="hero__title">
-                        Localización Turística y Audioguías<br>
-                        Que Conectan
-                    </h2>
-                    <p class="hero__subtitle">
-                        Transformamos su contenido para que resuene culturalmente con cada visitante, 
-                        desde la traducción de un menú hasta la producción completa de una audioguía multilingüe.
-                    </p>
-                    <a href="#contacto" class="hero__cta cta-button">Solicita tu Propuesta Hoy</a>
-                </div>
-                <div class="hero__image">
-                    <svg viewBox="0 0 100 100" class="hero__svg" aria-hidden="true">
-                        </svg>
-                </div>
-            </div>
-        </section>
+        <p class="footer-text" style="margin-top: var(--space-xl); font-size: 0.9rem; color: var(--color-text-secondary);">
+            &copy; 2025 VariLex. Todos los derechos reservados.
+        </p>
+        
+    </section>
+
+</body>
+</html>
