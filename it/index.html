@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pluri Lingo | Localizzazione Turistica e Audioguide</title>
-    <meta name="description" content="Pluri Lingo: Esperti in localizzazione di contenuti per il settore turistico e culturale. Sito web in costruzione.">
+    <title>VariLex | Localizzazione Turistica e Audioguide</title>
+    <meta name="description" content="VariLex: Esperti in localizzazione di contenuti per il settore turistico e culturale. Sito web in costruzione.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,20 +12,20 @@
     
     <style>
         /* ═══════════════════════════════════════════════════════════ */
-        /* TOKENS - PALETA: F4F1DE, 81B29A, 3D405B */
+        /* TOKENS - NUEVA PALETA: 002060, F2AC78, F9F3E3, EC6D60 */
         :root {
-            /* Colori Base: F4F1DE (Chiaro), 3D405B (Scuro) */
-            --color-neutral-50: #F4F1DE; 
-            --color-neutral-900: #3D405B; 
-            --color-neutral-100: #e8e5d6;
-            --color-neutral-200: #cac8c1;
+            /* Colori Principali: Vari, Lex, Sfondo */
+            --color-vari: #002060;     
+            --color-lex: #F2AC78;      
+            --color-neutral-bg: #F9F3E3; 
             
-            /* Colore Accento: 81B29A (Verde Tenue) */
-            --color-accent-500: #81B29A; 
-            --color-accent-600: #6c9c84;
-            --color-accent-300: #bbd7c7; 
+            /* Colori Secondari e di Risalto */
+            --color-resaltar: #EC6D60;  
+            --color-neutral-dark: #333333; 
             
-            --color-text-secondary: #575a72;
+            /* Ajustes para diseño */
+            --color-accent-600: #e29764; 
+            --color-text-secondary: var(--color-neutral-dark); 
 
             /* Spaziatura, Tipografia, Ombre e Animazione */
             --space-xs: 0.25rem;
@@ -38,8 +38,8 @@
             --font-size-2xl: clamp(2rem, 1.75rem + 1.25vw, 3rem);
             --radius-lg: 0.5rem;
             --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.04);
-            --cta-shadow-color: rgba(129, 178, 154, 0.5); 
-            --cta-shadow-hover: 0 8px 24px var(--cta-shadow-color), 0 4px 8px rgba(61, 64, 91, 0.1);
+            --cta-shadow-color: rgba(242, 172, 120, 0.5); 
+            --cta-shadow-hover: 0 8px 24px var(--cta-shadow-color), 0 4px 8px rgba(0, 32, 96, 0.1);
             --ease-in-out-superior: cubic-bezier(0.65, 0.05, 0.36, 1);
         }
         
@@ -48,7 +48,7 @@
         * { box-sizing: border-box; }
         body {
             font-family: 'Inter', sans-serif;
-            color: var(--color-neutral-900);
+            color: var(--color-vari); 
             line-height: 1.6;
             margin: 0;
             padding: 0;
@@ -58,12 +58,17 @@
             justify-content: center;
             text-align: center;
             
-            /* Animazione di Sfondo: Sfumatura morbida con la nuova palette */
-            background: linear-gradient(-45deg, var(--color-neutral-50), var(--color-neutral-100), var(--color-accent-300));
+            /* Animazione di Sfondo con la nuova paleta */
+            background: linear-gradient(-45deg, var(--color-neutral-bg), #fff9ec, var(--color-resaltar));
             background-size: 400% 400%;
             animation: gradientShift 15s ease infinite;
         }
         
+        /* ═══════════════════════════════════════════════════════════ */
+        /* CLASSI DI COLORE DEL LOGO */
+        .vari { color: var(--color-vari); }
+        .lex { color: var(--color-lex); }
+
         /* ═══════════════════════════════════════════════════════════ */
         /* KEYFRAMES */
         @keyframes fadeInUp {
@@ -99,7 +104,7 @@
         }
 
         /* Ocultar elementos para la entrada escalonada (staggered entrance) */
-        .title, .subtitle, .cta-button, .footer-text { 
+        .logo-title, .title, .subtitle, .cta-button, .footer-text { 
             opacity: 0; 
             animation-name: fadeInUp;
             animation-fill-mode: forwards;
@@ -113,19 +118,27 @@
             animation: fadeIn 0.5s 0.2s forwards; 
             z-index: 10;
         }
-        .title { animation-delay: 0.6s; } 
-        .subtitle { animation-delay: 0.8s; } 
-        .cta-button { animation-delay: 1.0s; } 
-        .footer-text { animation-delay: 1.2s; } 
+        .logo-title { animation-delay: 0.6s; } 
+        .title { animation-delay: 0.8s; } 
+        .subtitle { animation-delay: 1.0s; } 
+        .cta-button { animation-delay: 1.2s; } 
+        .footer-text { animation-delay: 1.4s; } 
 
         /* ═══════════════════════════════════════════════════════════ */
         /* ALTRI STILI */
+        .logo-title {
+            font-size: clamp(2.5rem, 2rem + 2.5vw, 4rem); 
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: var(--space-xl);
+        }
         .title {
             font-size: var(--font-size-2xl); 
             font-weight: 600;
             line-height: 1.1;
+            margin-top: 0;
             margin-bottom: var(--space-xl);
-            color: var(--color-neutral-900);
+            color: var(--color-vari);
         }
         .subtitle {
             font-size: var(--font-size-base);
@@ -138,8 +151,8 @@
             display: inline-block;
             padding: 1rem 2.5rem;
             border-radius: var(--radius-lg);
-            background-color: var(--color-accent-500);
-            color: white;
+            background-color: var(--color-lex); 
+            color: white; 
             font-weight: 600;
             text-decoration: none;
             border: none;
@@ -149,7 +162,7 @@
             transform: translateZ(0);
         }
         .cta-button:hover, .cta-button:focus-visible {
-            background-color: var(--color-accent-600);
+            background-color: var(--color-accent-600); 
             box-shadow: var(--cta-shadow-hover);
             transform: translateY(-4px) translateZ(0); 
             outline: none;
@@ -161,7 +174,7 @@
             display: flex;
             gap: var(--space-xs);
             padding: var(--space-sm);
-            border: 1px solid var(--color-neutral-200);
+            border: 1px solid var(--color-neutral-dark);
             border-radius: var(--radius-lg);
             background-color: white;
         }
@@ -174,7 +187,7 @@
             transition: background-color 0.15s, color 0.15s;
         }
         .lang-selector a.is-active {
-            background-color: var(--color-accent-500);
+            background-color: var(--color-lex); 
             color: white;
             font-weight: 700;
         }
@@ -191,21 +204,25 @@
             <a href="index.html" class="is-active" lang="it">IT</a>
         </div>
         
-        <h1 class="title">Sito in Costruzione</h1>
+        <h1 class="logo-title">
+            <span class="vari">Vari</span><span class="lex">Lex</span>
+        </h1>
+        
+        <p class="title">Sito in Costruzione</p>
         
         <p class="subtitle">
             Stiamo lavorando per finalizzare la nostra piattaforma. Nel frattempo, non ritardare il tuo progetto.
             <br><br>
-            Se hai domande o desideri inviare il tuo progetto di localizzazione o audioguida, ti preghiamo di contattarci via email. Saremo lieti di aiutarti.
+            Se hai domande o desideri inviare il tuo progetto di localizzazione o audioguida, ti preghiamo di **contattarci via email**. Saremo lieti di aiutarti.
         </p>
         
-        <a href="mailto:info@plurilingo.com?subject=Richiesta%20Pluri%20Lingo%20(Sito%20in%20Costruzione)" 
+        <a href="mailto:info@varilex.com?subject=Richiesta%20VariLex%20(Sito%20in%20Costruzione)" 
            class="cta-button">
-           📧 Invia Richiesta a info@plurilingo.com
+           📧 Invia Richiesta a info@varilex.com
         </a>
 
         <p class="footer-text" style="margin-top: var(--space-xl); font-size: 0.9rem; color: var(--color-text-secondary);">
-            &copy; 2025 Pluri Lingo. Tutti i diritti riservati.
+            &copy; 2025 VariLex. Tutti i diritti riservati.
         </p>
         
     </section>
